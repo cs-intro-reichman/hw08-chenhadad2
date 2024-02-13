@@ -82,7 +82,7 @@ class PlayList {
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
         title.toLowerCase();
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < maxSize; i++){
             if (tracks[i].getTitle().toLowerCase().equals(title)) {
             return i;
             }  
@@ -202,8 +202,12 @@ class PlayList {
      *  rather than returning a new, sorted playlist, the method sorts
      *  the list on which it was called (this list). */
     public void sortedInPlace() {
-        // Uses the selection sort algorithm,  
-        // calling the minIndex method in each iteration.
-        //// replace this statement with your code
+       for (int i = 0; i < size; i++) {
+        int min = minIndex(i);
+         Track tempTrack = tracks[min];
+         remove(min);
+         add(min, tempTrack);
+
+       }
     }
 }
