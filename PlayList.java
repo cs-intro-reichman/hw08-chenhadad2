@@ -63,9 +63,9 @@ class PlayList {
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
     public void removeLast() {
-      if (size > 0){
+     
         size--;
-        }
+        
     }
     
     /** Returns the total duration (in seconds) of all the tracks in this list.*/
@@ -99,21 +99,15 @@ class PlayList {
     public boolean add(int i, Track track) {
 
         if ((size < maxSize) && (i >= 0) && (i < maxSize)) {
-             for (int j = maxSize - 1; j >= i; j--){
-                 if (j==i) {
-            
-                    tracks[j+1] = tracks[j];
-                    tracks[i] = track;
-
-                 }
-       
-                 else {
-                tracks[j+1] = tracks[j];       
+            size++;
+            for (int j = size; j > i; j--) {
+                tracks[j] = tracks[j-1];
             }
-             }
+            tracks[i] = track;
             return true;
             }
             return false;
+      
         }
 
      
