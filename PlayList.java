@@ -90,8 +90,8 @@ class PlayList {
         return -1;
     }
 
-    /** Inserts the given track in index i of this list. For example, if the list is
-     *  (t5, t3, t1), then just after add(1,t4) the list becomes (t5, t4, t3, t1).
+    /** Inserts the given track in index i of this list.For example, if the list is
+     *  (t5, t3, t1), then just after add(1,t4) the list be comes (t5, t4, t3, t1).
      *  If the list is the empty list (), then just after add(0,t3) it becomes (t3).
      *  If i is negative or greater than the size of this list, or if the list
      *  is full, does nothing and returns false. Otherwise, inserts the track and
