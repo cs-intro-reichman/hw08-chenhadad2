@@ -12,8 +12,8 @@ class PlayList {
         tracks = new Track[maxSize];
         size = 0;
     }
-
-    /** Returns the maximum size of this play list. */ 
+ 
+    /** Returns the maximum size of this play list. */
     public int getMaxSize() {
         return maxSize;
     }
@@ -39,7 +39,7 @@ class PlayList {
             if (size < maxSize) {
                 size++;
                 tracks[size-1] = track;
-            return true;
+                 return true;
             }
     
         
@@ -53,19 +53,18 @@ class PlayList {
     /** Returns the data of this list, as a string. Each track appears in a separate line. */
     //// For an efficient implementation, use StringBuilder.
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        for (int i = 0; i < size; i++){
-            s.append(tracks[i].toString());
-            s.append("\n");
-        }
-   
-        return s.toString();
+       String tracksString = "";
+       for (int i =0; i < size; i++){
+        string lengthString = String.valueOf(tracks[i].getDuration());
+        tracksString += "\n" + tracks[i].getArtist() + ", " + tracks[i].getTitle + ", " +lengthString;
+       }
+       return tracksString;
     }
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
     public void removeLast() {
         if (size > 0) {
-                    size --;
+            size --;
 
         }
         
