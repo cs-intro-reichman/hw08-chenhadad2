@@ -1,3 +1,4 @@
+import java.net.IDN;
 /** Represnts a list of musical tracks. The list has a maximum capacity (int),
  *  and an actual size (number of tracks in the list, an int). */
 class PlayList {
@@ -36,8 +37,8 @@ class PlayList {
      *  Otherwise, appends the track and returns true. */
     public boolean add(Track track) {
             if (size < maxSize) {
-                tracks[size] = track;
                 size++;
+                tracks[size-1] = track;
             return true;
             }
     
@@ -63,8 +64,10 @@ class PlayList {
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
     public void removeLast() {
-     
-        size--;
+        if (size > 0) {
+                    size --;
+
+        }
         
     }
     
