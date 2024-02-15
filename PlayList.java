@@ -151,9 +151,8 @@ class PlayList {
 
     /** Removes the first track from this list. If the list is empty, does nothing. */
     public void removeFirst() {
-        if (size > 0) {
-                remove(0);
-            }
+        remove(0);
+            
         }
     
     
@@ -161,11 +160,13 @@ class PlayList {
      *  If the total size of both lists is too large, does nothing. */
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
-        if ((size + other.size) <= maxSize) {
-                for (int j = 0; j < other.size; j++) {
-                       this.add(other.getTrack(j));
-                    }
+        int sizeOthers = other.getSize();
+        if (size+ sizeOthers < maxSize) {
+            for (int i = 0; i < sizeOthers; i ++) {
+                tracks[size+i] = other.tracks[i];
             }
+            size += sizeOthers;
+        }
         }
 
     
@@ -204,7 +205,7 @@ class PlayList {
         int min = minIndex(i);
          Track tempTrack = tracks[min];
          remove(min);
-         add(min, tempTrack);
+         add(i, tempTrack);
 
        }
     }
