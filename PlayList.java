@@ -83,14 +83,26 @@ class PlayList {
     /** Returns the index of the track with the given title in this list.
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
-        title.toLowerCase();
-        for (int i = 0; i < maxSize; i++){
-            if (tracks[i].getTitle().toLowerCase().equals(title)) {
+        int i = 0;
+        boolean foundTrack = false;
+        String titlec = title.toLowerCase();
+        while (foundTrack == false && i < size ) {
+            String tracktitle = tracks[i].getTitle();
+            String tracktitlec = tracktitle.toLowerCase();
+            if (tracktitlec.compareTo(titlec) == 0) {
+                foundTrack = true;
+            }
+            else {
+                i++;
+            }
+        }
+        if (foundTrack == true) {
             return i;
-            }  
         }
         return -1;
-    }
+        }
+    
+    
 
     /** Inserts the given track in index i of this list.For example, if the list is
      *  (t5, t3, t1), then just after add(1,t4) the list be comes (t5, t4, t3, t1).
@@ -130,14 +142,11 @@ class PlayList {
      *  If such a track is not found, or the list is empty, or the given index
      *  is negative or too big for this list, does nothing. */
     public void remove(String title) {
-        if (size > 0) {
-            for (int i = 0; i < maxSize; i++) {
-                if (tracks[i].getTitle().toLowerCase().equals(title.toLowerCase())){
-                    remove(i);
-                }
-            }
+        int index = indexOf(title);
+        if (index == -1) {
+            return;
         }
-
+        remove(index);
     }
 
     /** Removes the first track from this list. If the list is empty, does nothing. */
